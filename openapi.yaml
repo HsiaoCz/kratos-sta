@@ -1,0 +1,84 @@
+# Generated with protoc-gen-openapi
+# https://github.com/google/gnostic/tree/master/cmd/protoc-gen-openapi
+
+openapi: 3.0.3
+info:
+    title: Greeter API
+    description: The greeting service definition.
+    version: 0.0.1
+paths:
+    /user/login:
+        post:
+            tags:
+                - Greeter
+            description: Sends a greeting
+            operationId: Greeter_Login
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/helloworld.v1.UserLoginRequest'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/helloworld.v1.UserLoginResponse'
+    /user/signup:
+        post:
+            tags:
+                - Greeter
+            operationId: Greeter_Signup
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/helloworld.v1.UserSignupRequest'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/helloworld.v1.UserSignupResponse'
+components:
+    schemas:
+        helloworld.v1.UserLoginRequest:
+            type: object
+            properties:
+                username:
+                    type: string
+                password:
+                    type: string
+                email:
+                    type: string
+            description: user login
+        helloworld.v1.UserLoginResponse:
+            type: object
+            properties:
+                msg:
+                    type: string
+                token:
+                    type: string
+        helloworld.v1.UserSignupRequest:
+            type: object
+            properties:
+                username:
+                    type: string
+                password:
+                    type: string
+                rePassword:
+                    type: string
+                email:
+                    type: string
+            description: user signup
+        helloworld.v1.UserSignupResponse:
+            type: object
+            properties:
+                msg:
+                    type: string
+tags:
+    - name: Greeter
