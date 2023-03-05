@@ -30,6 +30,17 @@ func (s *GreeterService) Singup(ctx context.Context, req *v1.UserSignupRequest) 
 		reply.Msg = "请确认密码"
 		return
 	}
-	
+	userSignup := &biz.UserSignup{
+		Username: req.Username,
+		Password: req.Password,
+		Email:    req.Email,
+	}
+    n,err:=s.uc.CheckUserByName(context.Background(),userSignup)
+    if err != nil {
+		return nil, err
+	} 
+	if n==0{
+		reply.Msg="注册成功"
+	}
 	return nil, nil
 }

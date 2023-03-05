@@ -49,3 +49,7 @@ type GreeterUsecase struct {
 func NewGreeterUsecase(ur UserRepo, logger log.Logger) *GreeterUsecase {
 	return &GreeterUsecase{ur: ur, log: log.NewHelper(logger)}
 }
+
+func (s *GreeterUsecase) CheckUserByName(ctx context.Context, us *UserSignup) (int, error) {
+	return 0, nil
+}
